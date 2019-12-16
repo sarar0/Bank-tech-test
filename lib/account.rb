@@ -2,10 +2,9 @@ require 'date'
 
 class Account
 
-    def initialize(output = $stdout)
+    def initialize
         @balance = 0
         @transactions = [["date || credit || debit || balance"]]
-        @output = output
     end
 
     def deposit(date, amount)
@@ -31,7 +30,7 @@ class Account
     end
 
     def print_statement
-        @output.puts @transactions
+        puts @transactions
         return @transactions.join("\n")
     end 
 

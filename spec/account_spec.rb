@@ -46,8 +46,7 @@ describe Account do
 
     describe '#print_statement' do
         it 'prints the column headers when there are no transactions' do
-            new_account = Account.new(StringIO.new)
-            expect(new_account.print_statement).to eq("date || credit || debit || balance")
+            expect(subject.print_statement).to eq("date || credit || debit || balance")
         end
 
         it 'prints column headers and transaction/balance when transaction is a 500 deposit on 14/01/2012' do
