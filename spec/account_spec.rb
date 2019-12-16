@@ -49,11 +49,16 @@ describe Account do
             expect(subject.print_statement).to eq("date || credit || debit || balance")
         end
 
+        it 'prints with last input first and with formatted dates when dates are entered as DD-MM-YYYY' do
+            subject.deposit("14-01-2012", 500.00)
+            subject.withdraw("15-01-2012", 400.00)
+            expect(subject.print_statement).to eq("date || credit || debit || balance\n15/01/2012 || 400.00 || || 100.00\n14/01/2012 || || 500.00 || 500.00")
+        end
+
         it 'prints column headers and transaction/balance when transaction is a 500 deposit on 14/01/2012' do
-            subject.deposit("14/01/2012", 500.00)
+            subject.deposit("14-01-2012", 500.00)
             expect(subject.print_statement).to eq("date || credit || debit || balance\n14/01/2012 || || 500.00 || 500.00")
         end
     end
-
 
 end

@@ -42,25 +42,42 @@
     - The bank statement should have the following headers (in this order): date, credit, debit, balance. Each column should be separated by "||" and each transaction should show on a separate line.
     - If the transaction was a withdrawal, the "deposit" column should be empty and viceversa.
     - The statement should show the transaction in reverse chronological order.
-    - Date formatting should be DD/MM/YYYY.
+    - Date formatting on the statement should be DD/MM/YYYY, but the input might be DD-MM-YYYY.
     - Amounts should be floats with two decimal places.
     - The initial balance is zero (ideally I would have like to clarify this requirement).
 
     Edge cases/required validations:
     - The amount for a deposit/withdrawal can only be greater than zero.
-    - The maximum amount that can be withdrawn is equivalent to the available balance (I have assumed this but ideally this should be clarified).
+    - The maximum amount that can be withdrawn is equivalent to the available balance (I have assumed this, but ideally this should be clarified).
     - Transaction date cannot be a future date. 
 
 #### Structure:
-I decided to only have one class (Account), as all the attributes and method seem to logically fit under and interact with the concept of a 'bank account'. Upon instantiation, the class would have a @balance property (set to 0) and an empty array for @transactions. 
+I decided to only have one class (Account), as all the attributes and methods (i.e. bank transactions) seem to logically fit under and interact with the concept of a 'bank account'. Upon instantiation, the class would have a @balance property (set to 0) and an empty array for @transactions. 
 
 #### How to install and run code and tests:
 
 The program can be run in IRB by requiring the ```account.rb``` file. Test can be run thorugh the ```rspec``` command in the terminal (from root folder).
 
-#### Screenshots/Sample:
+#### Example from IRB:
 
-TO BE INSERTED
+    2.6.5 :002 > account = Account.new
+    => #<Account:0x00007f8da9176608 @balance=0, @transactions=[["date || credit || debit || balance"]]> 
+    2.6.5 :003 > account.deposit("14/10/2019", 1000)
+    => ["14/10/2019 || 1000.00 || || 1000.00"] 
+    2.6.5 :004 > account.withdraw("13-11-2019", 200)
+    => ["13/11/2019 || || 200.00 || 800.00"] 
+    2.6.5 :005 > account.withdraw("13-11-2019", 100)
+    => ["13/11/2019 || || 100.00 || 700.00"] 
+    2.6.5 :006 > account.deposit("14/11/2019", 50)
+    => ["14/11/2019 || 50.00 || || 750.00"] 
+    2.6.5 :007 > account.print_statement
+    date || credit || debit || balance
+    14/11/2019 || 50.00 || || 750.00
+    13/11/2019 || || 100.00 || 700.00
+    13/11/2019 || || 200.00 || 800.00
+    14/10/2019 || 1000.00 || || 1000.00
+
+
 
 #### Possible extensions:
 

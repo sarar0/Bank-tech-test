@@ -12,7 +12,7 @@ class Account
             fail 'Please enter a valid input for date and/or amount'
         else
             @balance += amount
-            this_transaction = [[date, " || || ", sprintf("%.2f", amount), " || ", sprintf("%.2f", @balance)].join()]
+            this_transaction = [[date.gsub(/-/, '/'), " || ", sprintf("%.2f", amount), " || || ", sprintf("%.2f", @balance)].join()]
             @transactions.insert(1, this_transaction)
             return this_transaction 
         end
@@ -23,7 +23,7 @@ class Account
             fail 'Please enter a valid input for date and/or amount'
         else
             @balance -= amount
-            this_transaction = [[date, " || ", sprintf("%.2f", amount), " || || ", sprintf("%.2f", @balance)].join()]
+            this_transaction = [[date.gsub(/-/, '/'), " || || ", sprintf("%.2f", amount), " || ", sprintf("%.2f", @balance)].join()]
             @transactions.insert(1, this_transaction)
             return this_transaction 
         end
