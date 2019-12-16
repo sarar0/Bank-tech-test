@@ -30,8 +30,8 @@
         |  @transactions         |           
         --------------------------
         |  Methods:              |
-        |  deposit(amount, date) |
-        |  withdraw(amount, date)|
+        |  deposit(date, amount) |
+        |  withdraw(date, amount)|
         |  print_statement       |
         --------------------------
 
@@ -56,10 +56,6 @@ I decided to only have one class (Account), as all the attributes and method see
 #### How to install and run code and tests:
 
 The program can be run in IRB by requiring the ```account.rb``` file. Test can be run thorugh the ```rspec``` command in the terminal (from root folder).
-
-#### Dependencies:
-
-TO BE INSERTED
 
 #### Screenshots/Sample:
 
