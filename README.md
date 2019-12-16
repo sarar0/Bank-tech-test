@@ -1,15 +1,22 @@
 ### Bank tech test
 
- Describe how you approached designing your solution to the problem.
+ #### Initial steps: 
+ 1. Initialised git, created a Gemfile through 'bundle init'.
+ 2. Installed SimpleCov and Rubocop.
 
- Describe how you structured your code. Why did you do it this way?
+#### Design approach: 
+ 
 
- Describe how to install and run your code and tests.
+#### Structure:
 
- Describe the dependencies your code has. What trade-offs did you make when deciding what dependencies to use?
 
- Include screenshots of your running app.
+#### How to install and run code and tests:
 
- Try very hard to complete all the tasks in the tech test. If you run out of time, outline how you would have approached the sections you didn't get to.
 
- Describe the extensions you would add if you had more time.
+#### Dependencies:
+
+
+#### Screenshots:
+
+
+#### Possible extensions:
