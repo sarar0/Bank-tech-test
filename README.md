@@ -1,4 +1,4 @@
-### Bank tech test
+## Bank tech test
 
 #### Project setup steps: 
  1. Initialised git, created a Gemfile through 'bundle init'.
