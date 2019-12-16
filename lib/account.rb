@@ -20,12 +20,16 @@ class Account
 
     def withdraw(date, amount)
         if validate(date, amount) == false
-            fail 'Please enter a valid input for date and/or amount'
+            fail "Please enter a valid input for date and/or amount"
         else
-            @balance -= amount
-            this_transaction = [[date.gsub(/-/, '/'), " || || ", sprintf("%.2f", amount), " || ", sprintf("%.2f", @balance)].join()]
-            @transactions.insert(1, this_transaction)
-            return this_transaction 
+            if amount - @balance > 0
+                fail "The amount exceeds the available balance by #{sprintf("%.2f",(amount - @balance))}"
+            else
+                @balance -= amount
+                this_transaction = [[date.gsub(/-/, '/'), " || || ", sprintf("%.2f", amount), " || ", sprintf("%.2f", @balance)].join()]
+                @transactions.insert(1, this_transaction)
+                return this_transaction 
+            end
         end
     end
 

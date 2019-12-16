@@ -22,18 +22,18 @@
                 
  2. As initial step, I identified the actions/verbs and nouns from the user stories and the acceptance criteria. ACTIONS: deposit, withdraw, and print statements. NOUNS: date, amount, balance. I drew a class diagram:
 
-        --------------------------
-        |        Account         |
-        --------------------------
-        |  Attributes:           |
-        |  @balance              |   
-        |  @transactions         |           
-        --------------------------
-        |  Methods:              |
-        |  deposit(date, amount) |
-        |  withdraw(date, amount)|
-        |  print_statement       |
-        --------------------------
+            --------------------------
+            |        Account         |
+            --------------------------
+            |  Attributes:           |
+            |  @balance              |   
+            |  @transactions         |           
+            --------------------------
+            |  Methods:              |
+            |  deposit(date, amount) |
+            |  withdraw(date, amount)|
+            |  print_statement       |
+            --------------------------
 
  3. I developed some acceptance crtieria based on the ones provided in the specifications: 
 
