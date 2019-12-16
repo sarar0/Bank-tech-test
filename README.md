@@ -41,6 +41,7 @@
     - For each withdrawal, date and amount should be recorded.
     - The bank statement should have the following headers (in this order): date, credit, debit, balance. Each column should be separated by "||" and each transaction should show on a separate line.
     - If the transaction was a withdrawal, the "deposit" column should be empty and viceversa.
+    - The statement should show the transaction in reverse chronological order.
     - Date formatting should be DD/MM/YYYY.
     - Amounts should be floats with two decimal places.
     - The initial balance is zero (ideally I would have like to clarify this requirement).

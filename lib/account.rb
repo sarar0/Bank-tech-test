@@ -1,25 +1,28 @@
 class Account
 
-    def initialize
+    def initialize(output = $stdout)
         @balance = 0
-        @transactions = []
+        @transactions = [["date || credit || debit || balance"]]
+        @output = output
     end
 
-    def deposit
-        @transactions.push(["14/01/2012 || || 500.00 || 2500.00"])
+    def deposit(date, amount)
+        @balance += amount
+        this_transaction = [[date, " || || ", sprintf("%.2f", amount), " || ", sprintf("%.2f", @balance)].join()]
+        @transactions.insert(1, this_transaction)
+        return this_transaction 
     end
 
     def withdraw(date, amount)
-    
+        @balance -= amount
+        this_transaction = [[date, " || ", sprintf("%.2f", amount), " || || ", sprintf("%.2f", @balance)].join()]
+        @transactions.insert(1, this_transaction)
+        return this_transaction 
     end
 
-
     def print_statement
-        statement = [["date || credit || debit || balance"]]
-        @transactions.each do |line| 
-            statement.push(line.join())
-        end
-        return statement.join("\n")
+        @output.puts @transactions
+        return @transactions.join("\n")
     end 
 
 end
