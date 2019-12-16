@@ -1,6 +1,6 @@
 ### Bank tech test
 
-#### Initial steps: 
+#### Project setup steps: 
  1. Initialised git, created a Gemfile through 'bundle init'.
  2. Installed SimpleCov and Rubocop.
 
@@ -42,7 +42,7 @@
     - The bank statement should have the following headers (in this order): date, credit, debit, balance. Each column should be separated by "||" and each transaction should show on a separate line.
     - If the transaction was a withdrawal, the "deposit" column should be empty and viceversa.
     - Date formatting should be DD/MM/YYYY.
-    - Amounts should show two decimals.
+    - Amounts should be floats with two decimal places.
     - The initial balance is zero (ideally I would have like to clarify this requirement).
 
     Edge cases/required validations:
@@ -67,4 +67,6 @@ TO BE INSERTED
 
 #### Possible extensions:
 
-TO BE INSERTED
+If I had more time, I would have like to add a 'filter' to the 'print_statement' method, i.e. add a parameter so that the method would take a date range - this way the customer could print all the transactions in the specific date range.
+
+I would have also liked to work on a 'Bank' class, within which a customer could hold multiple accounts and print statements for each account.
