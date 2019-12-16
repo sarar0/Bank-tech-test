@@ -2,7 +2,7 @@
 
 #### Project setup steps: 
  1. Initialised git, created a Gemfile through 'bundle init'.
- 2. Installed SimpleCov and Rubocop.
+ 2. Installed SimpleCov.
 
 #### Design approach: 
 
@@ -42,7 +42,7 @@
     - The bank statement should have the following headers (in this order): date, credit, debit, balance. Each column should be separated by "||" and each transaction should show on a separate line.
     - If the transaction was a withdrawal, the "deposit" column should be empty and viceversa.
     - The statement should show the transaction in reverse chronological order.
-    - Date formatting on the statement should be DD/MM/YYYY, but the input might be DD-MM-YYYY.
+    - Date formatting on the statement should be DD/MM/YYYY, but the formatting of the input might be DD-MM-YYYY.
     - Amounts should be floats with two decimal places.
     - The initial balance is zero (ideally I would have like to clarify this requirement).
 
@@ -52,11 +52,11 @@
     - Transaction date cannot be a future date. 
 
 #### Structure:
-I decided to only have one class (Account), as all the attributes and methods (i.e. bank transactions) seem to logically fit under and interact with the concept of a 'bank account'. Upon instantiation, the class would have a @balance property (set to 0) and an empty array for @transactions. 
+I decided to only have one class (Account), as all the attributes and methods (i.e. simple bank transactions) seem to logically fit under and interact with the concept of a 'bank account'. Upon instantiation, the class would have a @balance property (set to 0) and an empty array for @transactions. 
 
 #### How to install and run code and tests:
 
-The program can be run in IRB by requiring the ```account.rb``` file. Test can be run thorugh the ```rspec``` command in the terminal (from root folder).
+The program can be run in IRB by requiring the ```account.rb``` file. Tests can be run thorugh the ```rspec``` command in the terminal (from root folder).
 
 #### Example from IRB:
 
