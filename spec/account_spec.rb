@@ -16,6 +16,16 @@ describe Account do
         end
     end
 
+    describe '#date_check' do
+        it 'returns true if date is in the past' do
+            expect(subject.check_date("11/07/2019")).to be true
+        end
+
+        it 'returns false if date is in the future' do
+            expect(subject.check_date("11/07/2029")).to be false
+        end
+    end
+
     describe '#print_statement' do
         it 'prints the column headers when there are no transactions' do
             new_account = Account.new(StringIO.new)
