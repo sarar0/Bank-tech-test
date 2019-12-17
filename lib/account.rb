@@ -1,8 +1,8 @@
 require 'date' 
 
 class Account
-    def initialize
-        @balance = 0
+    def initialize(balance = 0 )
+        @balance = balance
         @transactions = [["date || credit || debit || balance"]]
     end
 
