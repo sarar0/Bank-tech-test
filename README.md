@@ -3,6 +3,7 @@
 #### Project setup steps: 
  1. Initialised git, created a Gemfile through 'bundle init'.
  2. Installed SimpleCov.
+ 3. Installed Rubocop.
 
 #### Design approach: 
 
@@ -44,7 +45,7 @@
     - The statement should show the transaction in reverse order, i.e. the last one first. I have made an assumption that the input will be provided in chronological order.
     - Date formatting on the statement should be DD/MM/YYYY, but the input might be DD-MM-YYYY.
     - Amounts should be floats with two decimal places.
-    - The initial balance is zero (ideally I would have like to clarify this requirement).
+    - The initial balance would be zero by defaul, by the class could be instantiated with a different initial balance (ideally I would have like to clarify this requirement).
 
     Edge cases/required validations:
     - The amount for a deposit/withdrawal can only be greater than zero.
