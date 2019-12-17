@@ -20,9 +20,7 @@ class Account
 
   def withdraw(date, amount)
     validate(date, amount)
-    if (amount - @balance).positive?
-      raise "The amount exceeds the available balance by #{format('%.2f', (amount - @balance))}"
-    end
+    raise "The amount exceeds the available balance by #{format('%.2f', (amount - @balance))}" if (amount - @balance).positive?
     @balance -= amount
     withdrawal = format_string(date, amount, @balance).insert(1, "||")
     add_to_list(@transactions, withdrawal)

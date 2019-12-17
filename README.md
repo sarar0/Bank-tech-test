@@ -62,22 +62,22 @@ The program can be run in IRB by requiring the ```account.rb``` file. Tests can 
 
 #### Example from IRB:
 
-    2.6.5 :002 > account = Account.new
-    => #<Account:0x00007f8da9176608 @balance=0, @transactions=[["date || credit || debit || balance"]]> 
-    2.6.5 :003 > account.deposit("14/10/2019", 1000)
-    => ["14/10/2019 || 1000.00 || || 1000.00"] 
-    2.6.5 :004 > account.withdraw("13-11-2019", 200)
-    => ["13/11/2019 || || 200.00 || 800.00"] 
-    2.6.5 :005 > account.withdraw("13-11-2019", 100)
-    => ["13/11/2019 || || 100.00 || 700.00"] 
-    2.6.5 :006 > account.deposit("14/11/2019", 50)
-    => ["14/11/2019 || 50.00 || || 750.00"] 
-    2.6.5 :007 > account.print_statement
-    date || credit || debit || balance
-    14/11/2019 || 50.00 || || 750.00
-    13/11/2019 || || 100.00 || 700.00
-    13/11/2019 || || 200.00 || 800.00
-    14/10/2019 || 1000.00 || || 1000.00
+        2.6.5 :002 > account = Account.new
+        => #<Account:0x00007fac74969268 @balance=0, @transactions=["date || credit || debit || balance"]> 
+        2.6.5 :003 > account.deposit("14/10/2019", 1000)
+        => "14/10/2019 || 1000.00 || || 1000.00" 
+        2.6.5 :004 > account.withdraw("13-11-2019", 200)
+        => "13/11/2019 || || 200.00 || 800.00" 
+        2.6.5 :005 > account.withdraw("14-11-2019", 100)
+        => "14/11/2019 || || 100.00 || 700.00" 
+        2.6.5 :006 > account.deposit("14/12/2019", 50)
+        => "14/12/2019 || 50.00 || || 750.00" 
+        2.6.5 :007 > account.print_statement
+        date || credit || debit || balance
+        14/12/2019 || 50.00 || || 750.00
+        14/11/2019 || || 100.00 || 700.00
+        13/11/2019 || || 200.00 || 800.00
+        14/10/2019 || 1000.00 || || 1000.00
 
 #### Possible extensions:
 
