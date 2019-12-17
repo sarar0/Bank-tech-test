@@ -11,27 +11,22 @@ class Account
   end
 
   def deposit(date, amount)
-    if validate(date, amount) == false
-      raise 'Please enter a valid input for date and/or amount'
-    else
-      @balance += amount
-      deposit = format_string(date, amount, @balance).insert(3, "||")
-      add_to_list(@transactions, deposit)
-      deposit.join(" ")
-    end
+    validate(date, amount) 
+    @balance += amount
+    deposit = format_string(date, amount, @balance).insert(3, "||")
+    add_to_list(@transactions, deposit)
+    deposit.join(" ")
   end
 
   def withdraw(date, amount)
-    if validate(date, amount) == false
-      raise 'Please enter a valid input for date and/or amount'
-    elsif (amount - @balance).positive?
+    validate(date, amount)
+    if (amount - @balance).positive?
       raise "The amount exceeds the available balance by #{format('%.2f', (amount - @balance))}"
-    else
-      @balance -= amount
-      withdrawal = format_string(date, amount, @balance).insert(1, "||")
-      add_to_list(@transactions, withdrawal)
-      withdrawal.join(" ")
     end
+    @balance -= amount
+    withdrawal = format_string(date, amount, @balance).insert(1, "||")
+    add_to_list(@transactions, withdrawal)
+    withdrawal.join(" ")
   end
 
   def print_statement
@@ -54,9 +49,7 @@ class Account
 
   def validate(date, amount)
     if check_date(date) == false || amount.is_a?(Numeric) == false || amount <= 0
-      false
-    else
-      true
+      raise 'Please enter a valid input for date and/or amount'
     end
   end
 end
