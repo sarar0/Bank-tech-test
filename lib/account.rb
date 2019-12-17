@@ -1,7 +1,6 @@
 require 'date' 
 
 class Account
-
     def initialize
         @balance = 0
         @transactions = [["date || credit || debit || balance"]]
@@ -12,7 +11,7 @@ class Account
             fail 'Please enter a valid input for date and/or amount'
         else
             @balance += amount
-            this_transaction = [[date.gsub(/-/, '/'), " || ", sprintf("%.2f", amount), " || || ", sprintf("%.2f", @balance)].join()]
+            this_transaction = format_string_deposit(date, amount)
             @transactions.insert(1, this_transaction)
             return this_transaction 
         end
@@ -26,7 +25,7 @@ class Account
                 fail "The amount exceeds the available balance by #{sprintf("%.2f",(amount - @balance))}"
             else
                 @balance -= amount
-                this_transaction = [[date.gsub(/-/, '/'), " || || ", sprintf("%.2f", amount), " || ", sprintf("%.2f", @balance)].join()]
+                this_transaction = format_string_withdrawal(date, amount)
                 @transactions.insert(1, this_transaction)
                 return this_transaction 
             end
@@ -47,6 +46,14 @@ class Account
     end
 
     private
+
+    def format_string_deposit(date, amount)
+        return  [[date.gsub(/-/, '/'), " || ", sprintf("%.2f", amount), " || || ", sprintf("%.2f", @balance)].join()]
+    end
+
+    def format_string_withdrawal(date, amount)
+        return [[date.gsub(/-/, '/'), " || || ", sprintf("%.2f", amount), " || ", sprintf("%.2f", @balance)].join()]
+    end
 
     def validate(date, amount)
         if check_date(date) == false || amount.is_a?(Numeric) == false

@@ -3,7 +3,6 @@
     "coverage": {
       "/Users/Sara/Projects/MAKERS/_exercises/Tech tests/Bank /spec/account_spec.rb": [
         1,
-        1,
         null,
         1,
         null,
@@ -61,12 +60,13 @@
         1,
         1,
         1,
-        1,
         null,
         null,
         1,
         1,
         1,
+        1,
+        null,
         null,
         null,
         null,
@@ -122,6 +122,10 @@
         null,
         null,
         1,
+        5,
+        null,
+        null,
+        1,
         null,
         1,
         12,
@@ -134,6 +138,6 @@
         null
       ]
     },
-    "timestamp": 1576530905
+    "timestamp": 1576578532
   }
 }
