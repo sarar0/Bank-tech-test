@@ -42,7 +42,7 @@
     - For each withdrawal, date and amount should be recorded.
     - The bank statement should have the following headers (in this order): date, credit, debit, balance. Each column should be separated by "||" and each transaction should show on a separate line.
     - If the transaction was a withdrawal, the "deposit" column should be empty and viceversa.
-    - The statement should show the transaction in reverse order, i.e. the last one first. I have made an assumption that the input will be provided in chronological order.
+    - The statement should show the transaction in reverse order, i.e. the last one first. The date is passed in as an argument, and its default value is Time.now,
     - Date formatting on the statement should be DD/MM/YYYY, but the input might be DD-MM-YYYY.
     - Amounts should be floats with two decimal places.
     - The initial balance would be zero by defaul, by the class could be instantiated with a different initial balance (ideally I would have like to clarify this requirement).

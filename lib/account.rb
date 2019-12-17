@@ -10,7 +10,7 @@ class Account
     @transactions = ['date || credit || debit || balance']
   end
 
-  def deposit(date, amount)
+  def deposit(amount, date = Time.now.strftime("%d/%m/%Y"))
     validate(date, amount) 
     @balance += amount
     deposit = format_string(date, amount, @balance).insert(3, "||")
@@ -18,7 +18,7 @@ class Account
     deposit.join(" ")
   end
 
-  def withdraw(date, amount)
+  def withdraw(amount, date = Time.now.strftime("%d/%m/%Y"))
     validate(date, amount)
     raise "The amount exceeds the available balance by #{format('%.2f', (amount - @balance))}" if (amount - @balance).positive?
     @balance -= amount
@@ -31,8 +31,8 @@ class Account
     puts @transactions
   end
 
-  def check_date(date)
-    Date.today >= DateTime.parse(date)
+  def wrong_date?(date)
+    Date.today < DateTime.parse(date)
   end
 
   private
@@ -46,7 +46,7 @@ class Account
   end
 
   def validate(date, amount)
-    if check_date(date) == false || amount.is_a?(Numeric) == false || amount <= 0
+    if wrong_date?(date) || amount.is_a?(Numeric) == false || amount <= 0
       raise 'Please enter a valid input for date and/or amount'
     end
   end
