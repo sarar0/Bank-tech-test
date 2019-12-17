@@ -34,7 +34,6 @@ class Account
 
     def print_statement
         puts @transactions
-        return @transactions.join("\n")
     end 
 
     def check_date(date)

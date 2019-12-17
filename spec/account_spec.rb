@@ -54,18 +54,23 @@ describe Account do
 
     describe '#print_statement' do
         it 'prints the column headers when there are no transactions' do
-            expect(subject.print_statement).to eq("date || credit || debit || balance")
+            expect { subject.print_statement }.to output("date || credit || debit || balance\n").to_stdout
         end
 
         it 'prints column headers and transaction/balance when transaction is a 500 deposit on 14/01/2012' do
-            subject.deposit("14-01-2012", 500.00)
-            expect(subject.print_statement).to eq("date || credit || debit || balance\n14/01/2012 || 500.00 || || 500.00")
+            subject.deposit("14/01/2012", 500.00)
+            expect { subject.print_statement }.to output("date || credit || debit || balance\n14/01/2012 || 500.00 || || 500.00\n").to_stdout
         end
 
-        it 'prints with last input first and with formatted dates when dates are entered as DD-MM-YYYY' do
+        it 'prints with formatted date when date is entered as DD-MM-YYYY' do
+            subject.deposit("14-01-2012", 500.00)
+            expect { subject.print_statement }.to output("date || credit || debit || balance\n14/01/2012 || 500.00 || || 500.00\n").to_stdout
+        end
+
+        it 'prints with last input first' do
             subject.deposit("14-01-2012", 500.00)
             subject.withdraw("15-01-2012", 400.00)
-            expect(subject.print_statement).to eq("date || credit || debit || balance\n15/01/2012 || || 400.00 || 100.00\n14/01/2012 || 500.00 || || 500.00")
+            expect { subject.print_statement }.to output("date || credit || debit || balance\n15/01/2012 || || 400.00 || 100.00\n14/01/2012 || 500.00 || || 500.00\n").to_stdout
         end
 
     end
