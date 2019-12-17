@@ -56,7 +56,7 @@ class Account
     end
 
     def validate(date, amount)
-        if check_date(date) == false || amount.is_a?(Numeric) == false
+        if check_date(date) == false || amount.is_a?(Numeric) == false  || amount <=0
             return false
         else
             return true

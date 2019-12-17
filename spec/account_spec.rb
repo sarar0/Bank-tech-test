@@ -15,6 +15,10 @@ describe Account do
             expect { subject.deposit("14/01/2022", 300.00) }.to raise_error('Please enter a valid input for date and/or amount')
         end
 
+        it 'raises an error if the amount is 0' do
+            expect { subject.deposit("14/01/2012", 0) }.to raise_error('Please enter a valid input for date and/or amount')
+        end
+
     end
 
     describe '#withdraw' do
