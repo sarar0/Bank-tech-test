@@ -7,7 +7,7 @@ require 'date'
 class Account
   def initialize(balance = 0)
     @balance = balance
-    @transactions = [['date || credit || debit || balance']]
+    @transactions = ['date || credit || debit || balance']
   end
 
   def deposit(date, amount)
@@ -15,9 +15,9 @@ class Account
       raise 'Please enter a valid input for date and/or amount'
     else
       @balance += amount
-      this_transaction = format_string_deposit(date, amount)
-      @transactions.insert(1, this_transaction)
-      this_transaction
+      deposit = format_string(date, amount, @balance).insert(3, "||")
+      add_to_list(@transactions, deposit)
+      deposit.join(" ")
     end
   end
 
@@ -28,9 +28,9 @@ class Account
       raise "The amount exceeds the available balance by #{format('%.2f', (amount - @balance))}"
     else
       @balance -= amount
-      this_transaction = format_string_withdrawal(date, amount)
-      @transactions.insert(1, this_transaction)
-      this_transaction
+      withdrawal = format_string(date, amount, @balance).insert(1, "||")
+      add_to_list(@transactions, withdrawal)
+      withdrawal.join(" ")
     end
   end
 
@@ -44,12 +44,12 @@ class Account
 
   private
 
-  def format_string_deposit(date, amount)
-    [[date.gsub(/-/, '/'), ' || ', format('%.2f', amount), ' || || ', format('%.2f', @balance)].join]
-  end
-
-  def format_string_withdrawal(date, amount)
-    [[date.gsub(/-/, '/'), ' || || ', format('%.2f', amount), ' || ', format('%.2f', @balance)].join]
+  def add_to_list(list, transaction)
+    list.insert(1, transaction.join(" "))
+  end 
+  
+  def format_string(date, amount, balance)
+    [date.gsub(/-/, '/'), "||", format('%.2f', amount), "||", format('%.2f', balance)]
   end
 
   def validate(date, amount)

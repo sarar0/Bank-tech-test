@@ -7,7 +7,7 @@ require 'account'
 describe Account do
   describe '#deposit' do
     it 'saves the date and amount in the right order as string' do
-      expect(subject.deposit('14/01/2012', 500.00)).to eq(['14/01/2012 || 500.00 || || 500.00'])
+      expect(subject.deposit('14/01/2012', 500.00)).to eq('14/01/2012 || 500.00 || || 500.00')
     end
 
     it 'raises an error if the input for the amount is not a number' do
@@ -27,7 +27,7 @@ describe Account do
     let(:account) { Account.new(1000) }
 
     it 'saves the date and amount in the right order as string, and balance is updated' do
-      expect(account.withdraw('14/01/2012', 500.00)).to eq(['14/01/2012 || || 500.00 || 500.00'])
+      expect(account.withdraw('14/01/2012', 500.00)).to eq('14/01/2012 || || 500.00 || 500.00')
     end
 
     it 'raises an error if the input for the amount is not a number' do
@@ -85,9 +85,11 @@ describe Account do
     it 'prints with last input first' do
       subject.deposit('14-01-2012', 500.00)
       subject.withdraw('15-01-2012', 400.00)
+      subject.withdraw('16-01-2012', 50.00)
       expect { subject.print_statement }.to output(
         <<~HEREDOC
           date || credit || debit || balance
+          16/01/2012 || || 50.00 || 50.00
           15/01/2012 || || 400.00 || 100.00
           14/01/2012 || 500.00 || || 500.00
         HEREDOC
