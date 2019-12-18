@@ -72,9 +72,19 @@ The program can be run in IRB by requiring the ```account.rb``` file. Tests can 
 
 #### Example from IRB:
 
-
-
-
+        2.6.5 :002 > account = Account.new
+        => #<Account:0x00007fca298e3730 @balance=0, @transactions=[]> 
+        2.6.5 :003 > account.deposit(100)
+        => [["18/12/2019", "||", 100, "|| ||", 100]] 
+        2.6.5 :004 > account.deposit(500)
+        => [["18/12/2019", "||", 500, "|| ||", 600], ["18/12/2019", "||", 100, "|| ||", 100]] 
+        2.6.5 :005 > account.withdraw(100)
+        => [["18/12/2019", "|| ||", 100, "||", 500], ["18/12/2019", "||", 500, "|| ||", 600], ["18/12/2019", "||", 100, "|| ||", 100]] 
+        2.6.5 :006 > account.print_statement
+        date || credit || debit || balance
+        18/12/2019 || || 100.00 || 500.00
+        18/12/2019 || 500.00 || || 600.00
+        18/12/2019 || 100.00 || || 100.00
 
 #### Possible extensions:
 
