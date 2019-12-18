@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-# This class contains all methods needed to interact with an account
-
 require 'date'
 
 class Account
+
   def initialize(balance = 0)
     @balance = balance
     @transactions = ['date || credit || debit || balance']
@@ -15,7 +14,6 @@ class Account
     @balance += amount
     deposit = format_string(date, amount, @balance).insert(3, "||")
     add_to_list(@transactions, deposit)
-    deposit.join(" ")
   end
 
   def withdraw(amount, date = Time.now.strftime("%d/%m/%Y"))
@@ -24,11 +22,6 @@ class Account
     @balance -= amount
     withdrawal = format_string(date, amount, @balance).insert(1, "||")
     add_to_list(@transactions, withdrawal)
-    withdrawal.join(" ")
-  end
-
-  def print_statement
-    puts @transactions
   end
 
   def wrong_date?(date)

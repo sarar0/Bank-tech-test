@@ -33,8 +33,16 @@
             |  Methods:              |
             |  deposit(date, amount) |
             |  withdraw(date, amount)|
-            |  print_statement       |
             --------------------------
+
+            --------------------------
+            |        Printer         |
+            --------------------------
+            |  Methods:              |
+            |  formatting            |
+            |  print_statement       |
+            --------------------------    
+
 
  3. I developed some acceptance crtieria based on the ones provided in the specifications: 
 
@@ -45,7 +53,7 @@
     - The statement should show the transaction in reverse order, i.e. the last one first. The date is passed in as an argument, and its default value is Time.now,
     - Date formatting on the statement should be DD/MM/YYYY, but the input might be DD-MM-YYYY.
     - Amounts should be floats with two decimal places.
-    - The initial balance would be zero by defaul, by the class could be instantiated with a different initial balance (ideally I would have like to clarify this requirement).
+    - The initial balance would be zero by default, but the class could be instantiated with a different initial balance (ideally I would have like to clarify this requirement).
 
     Edge cases/required validations:
     - The amount for a deposit/withdrawal can only be greater than zero.
@@ -54,7 +62,9 @@
 
 #### Structure:
 
-I decided to only have one class (Account), as all the attributes and methods (i.e. bank transactions) seem to logically fit under and interact with the concept of a 'bank account'. Upon instantiation, the class would have a @balance property (set to 0) and an empty array for @transactions. 
+I would have two classes: 
+- Account, which would be responsible for managing all transactions.
+- Printer, which would format the statement and print it.
 
 #### How to install and run code and tests:
 
@@ -62,22 +72,9 @@ The program can be run in IRB by requiring the ```account.rb``` file. Tests can 
 
 #### Example from IRB:
 
-        2.6.5 :002 > account = Account.new
-        => #<Account:0x00007fac74969268 @balance=0, @transactions=["date || credit || debit || balance"]> 
-        2.6.5 :003 > account.deposit("14/10/2019", 1000)
-        => "14/10/2019 || 1000.00 || || 1000.00" 
-        2.6.5 :004 > account.withdraw("13-11-2019", 200)
-        => "13/11/2019 || || 200.00 || 800.00" 
-        2.6.5 :005 > account.withdraw("14-11-2019", 100)
-        => "14/11/2019 || || 100.00 || 700.00" 
-        2.6.5 :006 > account.deposit("14/12/2019", 50)
-        => "14/12/2019 || 50.00 || || 750.00" 
-        2.6.5 :007 > account.print_statement
-        date || credit || debit || balance
-        14/12/2019 || 50.00 || || 750.00
-        14/11/2019 || || 100.00 || 700.00
-        13/11/2019 || || 200.00 || 800.00
-        14/10/2019 || 1000.00 || || 1000.00
+
+
+
 
 #### Possible extensions:
 
