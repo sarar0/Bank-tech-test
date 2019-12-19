@@ -56,6 +56,17 @@ describe Account do
     end
 
   end  
+
+  describe '#print_statement' do
+    it 'can print' do
+      printer_class_double = double :printer_class
+      account = Account.new(printer_class: printer_class_double)
+      expect(printer_class_double).to receive(:print_formatted_list) 
+      account.print_statement
+    end
+
+  end  
+
 end
 
 # rubocop:enable Layout/LineLength, Metrics/BlockLength
