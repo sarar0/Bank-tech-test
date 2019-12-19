@@ -5,9 +5,10 @@ require_relative 'printer'
 
 class Account
 
-  def initialize(balance = 0)
+  def initialize(printer_class: Printer, balance: 0)
     @balance = balance
     @transactions = []
+    @printer_class = printer_class
   end
 
   def deposit(amount, date = Time.now.strftime("%d/%m/%Y"))
@@ -27,8 +28,8 @@ class Account
     Date.today < DateTime.parse(date)
   end
 
-  def print_statement(printer = Printer.new)
-    printer.print_formatted_list(@transactions)
+  def print_statement
+    @printer_class.print_formatted_list(@transactions)
   end
 
   private

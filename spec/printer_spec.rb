@@ -5,7 +5,7 @@ describe Printer do
     describe '#format_numbers(list)' do
         it 'transforms integers to floats with two decimal points, when given a nested array of strings and numbers' do
             list = [[2]]
-            expect(subject.format_numbers(list)).to eq([["2.00"]])
+            expect(described_class.format_numbers(list)).to eq([["2.00"]])
         end
 
     end   
@@ -13,7 +13,7 @@ describe Printer do
     describe '#print' do  
         it 'prints the column headers when there are no transactions' do
             list = []
-            expect { subject.print_formatted_list(list) }.to output(
+            expect { described_class.print_formatted_list(list) }.to output(
               <<~HEREDOC
                 date || credit || debit || balance
               HEREDOC
@@ -22,7 +22,7 @@ describe Printer do
 
         it 'prints a string after the column headers' do
             list = [["sample text"]]
-            expect { subject.print_formatted_list(list) }.to output(
+            expect { described_class.print_formatted_list(list) }.to output(
                 <<~HEREDOC
                   date || credit || debit || balance
                   sample text

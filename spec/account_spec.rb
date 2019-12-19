@@ -7,7 +7,7 @@ require 'account'
 describe Account do
 
   describe '#deposit' do
-    let(:account) { Account.new(100) }
+    let(:account) { Account.new(balance: 100) }
 
     it 'returns a balance of 150 when initial balance is 100 and deposit is 50' do
       expect(account.deposit(50.00, '14-01-2012')[-1][-1]).to eq(150.00)
@@ -27,7 +27,7 @@ describe Account do
   end
 
   describe '#withdraw' do
-    let(:account) { Account.new(1000) }
+    let(:account) { Account.new(balance: 1000) }
 
     it 'returns a balance of 150 when initial balance is 100 and withdrawal is 50' do
       expect(account.withdraw(500.00, '14-01-2012')[-1][-1]).to eq(500.00)
@@ -53,33 +53,6 @@ describe Account do
 
     it 'returns false if date is in the future' do
       expect(subject.wrong_date?('11-07-2029')).to be true
-    end
-
-  end
-
-  describe '#print_statement' do
-    it 'prints column headers and transaction/balance when transaction is a 500 deposit on 14/01/2012' do
-      subject.deposit(500.00, '14-01-2012')
-      expect { subject.print_statement }.to output(
-        <<~HEREDOC
-          date || credit || debit || balance
-          14/01/2012 || 500.00 || || 500.00
-        HEREDOC
-      ).to_stdout
-    end
-
-    it 'prints with last input first' do
-      subject.deposit(500.00, '14-01-2012')
-      subject.withdraw(400.00, '15-01-2012')
-      subject.withdraw(50.00, '16-01-2012')
-      expect { subject.print_statement }.to output(
-        <<~HEREDOC
-          date || credit || debit || balance
-          16/01/2012 || || 50.00 || 50.00
-          15/01/2012 || || 400.00 || 100.00
-          14/01/2012 || 500.00 || || 500.00
-        HEREDOC
-      ).to_stdout
     end
 
   end  
